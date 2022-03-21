@@ -1,25 +1,21 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
+;
 const autherSchema = new mongoose.Schema({
 
-        firstName: { type: String, require: true },
+        firstName: { type: String, required: true },
 
-        lastName: { type: String, require: true },
+        lastName: { type: String, required: true },
 
-        title: { type: String, require: true, enum: ["Mr", "Mrs", "Miss"] },
+        title: { type: String, required: true, enum: ["Mr", "Mrs", "Miss"] },
 
         email:{
                 type:String,
-                validate:{
-                      validator: validator.isEmail,
-                      message: '{VALUE} is not a valid email',
-                      isAsync: false
-                    }
+               required :true
                 },
 
-        password: { type: String, require: true }
+        password: { type: String, required: true }
 
 }, { timestamps: true });
 
 
-module.exports = mongoose.model('Auther', autherSchema) 
+module.exports = mongoose.model('newAuther', autherSchema) 

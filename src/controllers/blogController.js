@@ -50,7 +50,7 @@ let getBlog = async function (req, res) {
     let query = req.query
     let filter = {
       isdeleted: false,
-      ispublished: false,
+      ispublished: true,
       ...query
     };
     let filterByquery = await BlogModel.find(filter)
