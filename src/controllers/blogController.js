@@ -17,29 +17,6 @@ const createblog = async function (req, res) {
 
 }
 
-const loginAuther = async function (req, res) {
-  try {
-    let autherName = req.body.emailId;
-    let password = req.body.password;
-
-
-    let auther = await AutherModel.findOne({ emailId: autherName, password: password });
-    if (!auther)
-      return res.status(400).send({
-        status: false,
-        msg: "auther name or the password is not corerct",
-      });
-    let token = jwt.sign(
-      { autherID: auther._id.toString() }, 'shubham-thorium'
-    );
-    res.setHeader("x-api-key", token);
-    return res.status(200).send({ status: true, data: token });
-  }
-  catch (err) {
-    //  console.log("This is the error :", err.message)
-    return res.status(500).send({ msg: "Error", error: err.message })
-  }
-}
 
 
 
@@ -137,8 +114,8 @@ const deletebyQuery = async function (req, res) {
 }
 
 
+
 module.exports.createblog = createblog
-module.exports.loginAuther = loginAuther
 module.exports.getBlog = getBlog
 module.exports.updateblog = updateblog
 module.exports.deletebyId = deletebyId

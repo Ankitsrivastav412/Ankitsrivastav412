@@ -11,10 +11,10 @@ const middleware=require("../middleware/authh")
 router.post("/auther",AutherController.createauther)
 
 //Login auther....
-router.post("/login",BlogController.loginAuther)
+router.post("/login",AutherController.loginAuther)
 
 // Creat blog.......
-router.post("/blog", middleware.authenticate, BlogController.createblog)
+router.post("/blog", middleware.authenticate,BlogController.createblog)
 
 //Getblog.....
 router.get("/getblogg", middleware.authenticate, BlogController.getBlog)

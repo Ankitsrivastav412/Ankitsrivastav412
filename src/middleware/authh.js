@@ -1,5 +1,5 @@
 let jwt = require('jsonwebtoken')
-const BlogModel = require("../models/blogModel")
+const autherModel = require("../models/autherModel")
 
 let authenticate = function (req, res, next) {
   //Token authentication......
@@ -7,7 +7,7 @@ let authenticate = function (req, res, next) {
   try {
     let xAuthToken = req.headers["x-api-key"]
 
-    let decodedToken = jwt.verify(xAuthToken, 'shubham-thorium')
+    let decodedToken = jwt.verify(xAuthToken, 'Ankit-thorium')
     if (!decodedToken) return res.status(401).send({ status: false, msg: "token is not valid" })
 
     // Token authorization-----------------------------
